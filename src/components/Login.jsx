@@ -7,13 +7,12 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { HOME_IMG, USER_AVATAR } from "../utils/constants";
 const Login = () => {
   const [sign, setsign] = useState(true);
   const [errormessage, seterrormessage] = useState("");
-  const navigate = useNavigate();
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
@@ -44,8 +43,7 @@ const Login = () => {
 
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL:
-              "https://avatars.githubusercontent.com/u/120785449?s=400&v=4",
+            photoURL:USER_AVATAR,
           })
             .then(() => {
               // Profile updated! 
@@ -58,7 +56,7 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
+              
             })
             .catch((error) => {
               // An error occurred
@@ -83,7 +81,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           // ...
-          navigate("/browse");
+          
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -100,7 +98,7 @@ const Login = () => {
 
       <div className="absolute">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_large.jpg"
+          src={HOME_IMG}
           alt="Home img"
         />
       </div>

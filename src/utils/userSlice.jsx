@@ -13,6 +13,7 @@ export const userSlice = createSlice({
      return action.payload;
     },
     removeUser: (state,action) => {
+      console.log(state,action)
       return null;
     },
   },
