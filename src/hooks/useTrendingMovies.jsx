@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { addTrendingMovies } from "../utils/movieSlice";
 import { API_OPTIONS } from "../utils/constants";
 
 
 const useTrendingMovies = ()=>{
+
+  const nowTrendingMovies = useSelector(store=>store.movies.TrendingMovies);
 
 const dispatch = useDispatch()
   const getTrendingMovies = async()=>{
@@ -14,7 +16,8 @@ const dispatch = useDispatch()
     dispatch(addTrendingMovies(json.results))
   }
   useEffect(()=>{
-      getTrendingMovies();
+      // !nowTrendingMovies &&  getTrendingMovies();  it says if !nowTrendingMovies condition is true than call getTrendingMovies()
+     !nowTrendingMovies && getTrendingMovies();
   },[])
 
 }
