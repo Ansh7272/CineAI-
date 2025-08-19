@@ -100,11 +100,11 @@ const Login = () => {
         <img
           src={HOME_IMG}
           alt="Home img"
-        />
+         className="h-screen object-cover md:h-auto md:object-contain"/>
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="  absolute p-12 w-3/12 h-125  my-36 left-0 right-0 mx-auto text-white bg-black opacity-80"
+        className="  absolute p-12 w-full md:w-3/12 h-125 my-50  md:my-36 left-0 right-0 mx-auto text-white bg-black opacity-80"
       >
         <h1 className="font-bold text-3xl mb-4">
           {sign ? "Sign In" : "Sign Up"}{" "}

@@ -18,7 +18,7 @@ const Header = () => {
       .then(() => {
         // Sign-out successful.
       })
-      .catch((error) => {
+      .catch(() => {
         // An error happened.
 
       });
@@ -54,22 +54,22 @@ const Header = () => {
         dispatch(changeLanguage(e.target.value))
   }
   return (
-    <div className=" px-8 py-2 bg-gradient-to-b from-black absolute z-50 w-screen flex justify-between">
+    <div className=" px-8 py-2 bg-gradient-to-b from-black absolute z-50 w-screen flex flex-col md:flex-row md:justify-between ">
       <img
         src={LOGO}
         alt="logo"
-        className="w-44"
+        className="mx-auto md:mx-0 w-44"
       />
       {user && (
         
-        <div className="flex p-2 items-center">
+        <div className="flex justify-between md:flex p-2 md:items-center">
           {showGptSearch &&<select className="bg-gray-400 m-2" onChange={handleLanguageChange}>
             {SUPPORTED_LANGUAGES.map(lang=>
               <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>
             )}
           </select>}
           <button className="rounded-lg px-2 py-2 mr-2 bg-sky-600 text-white" onClick={onClickGptButtonhandler}>{showGptSearch?"Homepage":"GPT Search"}</button>
-          <img src={user?.photoURL} alt="profilelogo" className="w-9 h-9"/>
+          <img src={user?.photoURL} alt="profilelogo" className="hidden md:block w-9 h-9"/>
           <button onClick={handleSignout} className="text-white cursor-pointer">
             (Signout)
           </button>
